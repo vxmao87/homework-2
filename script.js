@@ -18,8 +18,8 @@ function generatePassword() {
   // If the user says yes, then the character set is placed inside the
   // "charSet" array, and guarantees that it will be used at least once,
   // hence the "uses: 1" tag
-  var numberOfChars = parseInt(prompt("How many characters would you like your password to have? Choose a number between 8 and 128, please!"));
-  if (typeof numberOfChars == "number" && numberOfChars >= 8 && numberOfChars <= 128) {
+  var numberOfChars = prompt("How many characters would you like your password to have? Choose a number between 8 and 128, please!");
+  if (numberOfChars >= 8 && numberOfChars <= 128) {
     var wantsCapital = confirm("Would you like your password to have capital letters?");
     if (wantsCapital) {
       charSet.push({text: capital, uses: 1});
@@ -83,9 +83,6 @@ function generatePassword() {
   } else {
     throw alert("Please type a valid number!");
   }
-
-
-  console.log(charSet);
   
   return finalPassword;
 }
