@@ -18,21 +18,24 @@ function generatePassword() {
   // If the user says yes, then the character set is placed inside the
   // "charSet" array, and guarantees that it will be used at least once,
   // hence the "uses: 1" tag
-  var numberOfChars = prompt("How many characters would you like your password to have? Choose a number between 8 and 128, please!");
+  //
+  // If the user does NOT type a number (one without letters or special characters),
+  // an exception is thrown to remind the user to type a valid number
+  var numberOfChars = prompt("How many characters would you like your password to have? (8-128 characters)");
   if (numberOfChars >= 8 && numberOfChars <= 128) {
-    var wantsCapital = confirm("Would you like your password to have capital letters?");
+    var wantsCapital = confirm("Would you like your password to have capital letters? (ex. " + capital + ")");
     if (wantsCapital) {
       charSet.push({text: capital, uses: 1});
     }
-    var wantsLowercase = confirm("Would you like your password to have lowercase letters?");
+    var wantsLowercase = confirm("Would you like your password to have lowercase letters? (ex. " + lowercase + ")");
     if (wantsLowercase) {
       charSet.push({text: lowercase, uses: 1});
     }
-    var wantsNumbers = confirm("Would you like your password to have numbers?");
+    var wantsNumbers = confirm("Would you like your password to have numbers? (ex. " + numbers + ")");
     if (wantsNumbers) {
       charSet.push({text: numbers, uses: 1});
     }
-    var wantsSpecial = confirm("Would you like your password to have special characters?");
+    var wantsSpecial = confirm("Would you like your password to have special characters? (ex. " + specialChar + ")");
     if (wantsSpecial) {
       charSet.push({text: specialChar, uses: 1});
     }
@@ -40,7 +43,8 @@ function generatePassword() {
     // Sets a condition as to whether all conditions have been used
     var allConditionsMet = false;
     
-    // Checks whether the user has said yes to any of the criteria - if not, throws an exception 
+    // Checks whether the user has said yes to any of the criteria - if not, throws an exception
+    // to remind the user to select at least one criterion to continue 
     if (charSet.length > 0) {
       // The number of uses for all characters should total up to the number that the user
       // typed up - this loop will account for the rest of the password length by randomly
@@ -50,11 +54,13 @@ function generatePassword() {
         charSet[num].uses++;
       }
       
+      // While not all conditions are met for the password, follow this "while" loop
       while (allConditionsMet == false) {
         var charLine = charSet[Math.floor(Math.random() * charSet.length)];
         // If there are still uses for the given character, use a random character off the 
-        // attached set of characters, and decrease the use of that character by one
-        if (charLine.uses != 0) {
+        // attached set of characters, attaches that character to the generated password, 
+        // and decrease the use of that character in the criterion by one
+        if (charLine.uses > 0) {
           var newChar = charLine.text.charAt(Math.floor(Math.random() * charLine.text.length));
           finalPassword += newChar;
           charLine.uses--;
@@ -83,7 +89,6 @@ function generatePassword() {
   } else {
     throw alert("Please type a valid number!");
   }
-  
   return finalPassword;
 }
 
