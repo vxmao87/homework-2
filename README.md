@@ -1,5 +1,13 @@
 # homework-3
 
-Homework 3 for the UW Coding Bootcamp tasks me to write JavaScript code to generate a password when given user criteria for a strong, secure password. The password must be between 8 and 128 characters long, and at least one type of character from each of the user's chosen criterion must be present in the final password.
+# Password Generator
 
-The toughest parts of this assignment were formulating a check for whether each type of character the user wants in the password has been used, checking the variable type for the "prompt" function because of the function's tendency to accept all values as Strings, and deciding whether to use one long concatenated String or an Object to make my code more accessible.
+A password generator that creates a password depending on user input. The generator takes into account whether the user wants to include uppercase/lowercase letters, numbers or special characters, and generates a password based on those criteria. The limit is 128 characters.
+
+# Description of Design
+
+The program uses JavaScript and takes advantage of for/while loops, along with many conditional statements and Object manipulation, especially in determining how many characters are left and how many of each character will be used.
+
+![image](Assets/password-generator.png)
+
+Access the password generator here: https://vxmao87.github.io/homework-3/
