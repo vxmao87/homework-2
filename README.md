@@ -1,5 +1,3 @@
-# homework-3
-
 # Password Generator
 
 A password generator that creates a password depending on user input. The generator takes into account whether the user wants to include uppercase/lowercase letters, numbers or special characters, and generates a password based on those criteria. The limit is 128 characters.
@@ -10,4 +8,4 @@ The program uses JavaScript and takes advantage of for/while loops, along with m
 
 ![image](Assets/password-generator.png)
 
-Access the password generator here: https://vxmao87.github.io/homework-3/
+Access the password generator here: https://vxmao87.github.io/password-generator/
